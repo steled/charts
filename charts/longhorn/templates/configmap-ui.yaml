@@ -3,12 +3,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: longhorn-ui-nginx-config
+  name: longhorn-ui-nginx-custom-config
   namespace: {{ include "release_namespace" . }}
   labels: {{- include "longhorn.labels" . | nindent 4 }}
     app: longhorn-ui
 data:
-  {{- with .Values.longhornUI.nginxConfig }}
+  {{- with .Values.longhornUI.nginxCustomConfig }}
   zz-custom.conf: |-
     {{- . | nindent 4 }}
   {{- end }}
