@@ -101,6 +101,10 @@ spec:
           mountPath: /var/cache/nginx/
         - name : nginx-config
           mountPath: /var/config/nginx/
+        {{- if .Values.longhornUI.nginxCustomConfig }}
+        - name: nginx-custom-config
+          mountPath: /var/config/nginx/conf.d/
+        {{- end }}
         - name: var-run
           mountPath: /var/run/
         ports:
@@ -118,6 +122,11 @@ spec:
         secret:
           secretName: longhorn-ui-tls
       {{- end }}
+      {{- end }}
+      {{- if .Values.longhornUI.nginxCustomConfig }}
+      - name: nginx-custom-config
+        configMap:
+          name: longhorn-ui-nginx-custom-config
       {{- end }}
       - emptyDir: {}
         name: nginx-cache
