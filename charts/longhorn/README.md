@@ -196,7 +196,7 @@ Longhorn consists of user-deployed components (for example, Longhorn Manager, Lo
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| longhornUI.nginxConfig  | object | `{}` | Specify a custom config for nginx. |
+| longhornUI.nginxCustomConfig | object | `{}` | Specify a custom config for nginx. |
 | longhornUI.nodeSelector | object | `{}` | Node selector for Longhorn UI. Specify the nodes allowed to run Longhorn UI. |
 | longhornUI.priorityClass | string | `"longhorn-critical"` | PriorityClass for Longhorn UI. |
 | longhornUI.replicas | int | `2` | Replica count for Longhorn UI. |
