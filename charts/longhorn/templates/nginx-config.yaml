@@ -1,0 +1,15 @@
+{{- if .Values.ingress.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: longhorn-ui-nginx-config
+  namespace: {{ include "release_namespace" . }}
+  labels: {{- include "longhorn.labels" . | nindent 4 }}
+    app: longhorn-ui
+data:
+  {{- with .Values.longhornUI.nginxConfig }}
+  zz-custom.conf: |-
+    {{- . | nindent 4 }}
+  {{- end }}
+{{- end }}
